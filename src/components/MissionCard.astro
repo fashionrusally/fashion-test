@@ -1,0 +1,14 @@
+---
+const { title, text } = Astro.props;
+---
+
+<article class="mission-card">
+  <h4>{title}</h4>
+  <p>{text}</p>
+</article>
+
+<style>
+  .mission-card { background: #8b0f00; color:#fff; padding:1.25rem; border-radius:8px; box-shadow:0 6px 0 rgba(0,0,0,0.08); }
+  .mission-card h4{ margin:0 0 .5rem 0; font-size:1.05rem; text-transform:uppercase; }
+  .mission-card p{ margin:0; font-size:0.9rem; line-height:1.4; max-width:44ch; word-wrap:break-word; }
+</style>

@@ -1,3 +1,6 @@
+---
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -8,17 +11,32 @@
 		<meta name="generator" content={Astro.generator} />
 		<title>FashionRus</title>
 	</head>
-	<body>
+	<body class="has-hero" style={`--hero-image: url('/assets/heroagoodcase.webp')`}>
 		<nav>
-			<a href="/">Home</a>
-			<a href="/about">About</a>
-			<a href="/contact">Contact</a>
-			<a href="/productlist">Product List</a>
+			<a href="/">Hjem</a>
+			<a href="/about">Social Ansvar</a>
+			<a href="/productlist">Produktliste</a>
 		</nav>
-		<h1>FashionRus</h1>
 		<slot />
-		<footer>
-			<p>Copyright 2024 FashionRus</p>
+		<footer class="site-footer">
+			<div class="footer-inner">
+				<div class="footer-left">
+					<h1 class="footer-brand">A GOOD CASE</h1>
+					<hr class="footer-hr" />
+					<address class="footer-address">
+						<p>Virksomhedsadresse</p>
+						<p>A Good Case ApS</p>
+						<p>Vallensbækvej 55</p>
+						<p>2605 Brøndby</p>
+						<p>CVR-nr 41440031</p>
+					</address>
+				</div>
+				<div class="footer-right">
+					<h3>Åbningstider</h3>
+					<p>Lagersalg samt<br/>afhentning af<br/>onlineordrer:</p>
+					<p class="open-hours">Onsdag-Fredag: 10:00 - 17:00</p>
+				</div>
+			</div>
 		</footer>
 	</body>
 </html>
@@ -27,5 +45,93 @@
 	html,
 	body {
 font-family: 'Courier New', Courier, monospace;
-	}
+	margin: 0;
+	padding: 0;
+}
+
+.hero-section {
+	min-height: 60vh;
+	background-image: var(--hero-image);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	color: #fff;
+	margin-top: -64px;
+	padding: 6rem 1rem 4rem 1rem;
+}
+
+nav {
+	height: 64px;
+	display: flex;
+	align-items: center;
+	padding: 0 1rem;
+	position: relative;
+	z-index: 10;
+}
+
+body.has-hero nav {
+	background: transparent;
+}
+
+nav a {
+	color: inherit;
+	text-decoration: none;
+	margin-right: 1rem;
+}
+
+h1 {
+	color: inherit;
+}
+
+.site-footer {
+	background: #A50202;
+	color: #fff;
+	padding: 4rem 2rem;
+}
+.footer-inner {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	gap: 2rem;
+	align-items: flex-start;
+}
+.footer-left { flex: 1 1 60%; 
+}
+.footer-brand { 
+	font-size: 5rem;
+	margin: 0 0 1rem 0; 
+	font-weight: 800; 
+	letter-spacing: 1px; 
+}
+.footer-hr { width: 70%; 
+	height: 4px; 
+	background: #fff; 
+	border: none; 
+	margin: 1rem 0 1.25rem 0; }
+.footer-address p { 
+	margin: 0.25rem 0;
+	opacity: 0.95; 
+}
+.footer-right { 
+	flex: 0 0 320px; 
+}
+.footer-right h3 { 
+	margin: 0 0 0.75rem 0; 
+	font-size: 1.25rem; 
+}
+.footer-right p { 
+	margin: 0 0 0.75rem 0; 
+	line-height: 1.5; 
+}
+.open-hours { 
+	font-weight: 700; 
+	margin-top: 0.5rem; 
+}
+
+@media (max-width:1000px) {
+	.footer-inner { flex-direction: column; align-items: flex-start; }
+	.footer-brand { font-size: 3rem; }
+	.footer-right { width:100%; }
+}
 </style>

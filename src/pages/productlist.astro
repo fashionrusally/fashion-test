@@ -1,24 +1,33 @@
 ---
- //@ts-nocheck 
 import Layout from '../layouts/Layout.astro';
 import Pcard from '../components/pcard.astro';
 const endpoint = "https://kea-alt-del.dk/t7/api/products?limit=50";
-const data = await fetch(endpoint).then(response => response.json()); 
-
-// console.log(data);
----
+const data = await fetch(endpoint).then(response => response.json());
+//@ts-nocheck 
+--- 
 
 <Layout>
 	<h2> Product List </h2>
-	<section>
-		{data.map((product) => <Pcard {product}/>)}
+	<section class="product-grid">
+		{data.map((product) => <Pcard product={product} />)}
 	</section>
+
+
+	
 </Layout>
 
 <style>
-section {
+.product-grid {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr) ;
+	grid-template-columns: repeat(3, 1fr);
 	gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .product-grid { grid-template-columns: 1fr; }
 }
 </style>
